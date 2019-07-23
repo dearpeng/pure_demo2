@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry location="mysql-connector-java-8.0.15.jar"/>
+    <context id="DB2Tables" defaultModelType="flat" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql:///cls?serverTimezone=UTC"
+                        userId="root" password="admin">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.cgw360.cls.model.approve"
+                            targetProject="C:\Users\ftcs\Desktop">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.cgw360.cls.model.approve"
+                         targetProject="C:\Users\ftcs\Desktop">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cgw360.cls.model.approve"
+                             targetProject="C:\Users\ftcs\Desktop">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="loan_approve_project" domainObjectName="LoanApproveProject">-->
+        <!--&lt;!&ndash;自动生成主键，可以代替useGeneratedKeys，大家不用删&ndash;&gt;-->
+        <!--<generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="loan_guarantor_info" domainObjectName="LoanGuarantorInfo">-->
+        <!--&lt;!&ndash;自动生成主键，可以代替useGeneratedKeys，大家不用删&ndash;&gt;-->
+        <!--<generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="employee" domainObjectName="Employee">
+            <!--自动生成主键，可以代替useGeneratedKeys，大家不用删-->
+            <generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>
+        </table>
+        <!--<table tableName="loan_info_view" domainObjectName="LoanInfoView">-->
+        <!--<property name="enableCountByExample" value="false"/>-->
+        <!--<property name="enableDeleteByExample" value="false"/>-->
+        <!--<property name="enableDeleteByPrimaryKey" value="false"/>-->
+        <!--<property name="enableInsert" value="false"/>-->
+        <!--<property name="enableSelectByPrimaryKey" value="false"/>-->
+        <!--<property name="enableUpdateByExample" value="false"/>-->
+        <!--<property name="enableUpdateByPrimaryKey" value="false"/>-->
+        <!--<property name="selectByExampleQueryId" value="true"/>-->
+        <!--<property name="selectByPrimaryKeyQueryId" value="false"/>-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>

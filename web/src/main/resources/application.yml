@@ -1,0 +1,18 @@
+#首先加载的yml配置,总控,父配置文件
+spring:
+  profiles:
+    active: dev
+---
+#不同的子配置文件 product
+spring:
+  profiles: product
+
+---
+#不同的子配置文件 test
+spring:
+  profiles: test
+
+---
+#不同的子配置文件 dev
+spring:
+     profiles: dev
