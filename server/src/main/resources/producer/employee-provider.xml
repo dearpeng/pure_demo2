@@ -7,7 +7,6 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:service interface="com.alimama.api.service.IEmployeeService" ref="employeeService" group="com.alimama.server"
                    version="1.0.0"/>
-    <dubbo:service ref="mqMessageProducerService" interface="com.alimama.api.service.IMqMessageProducerService" group="com.alimama.server"
+    <dubbo:service interface="com.alimama.api.service.IKafkaProducerService" ref="kafkaProducerService" group="com.alimama.server"
                    version="1.0.0"/>
-
 </beans>

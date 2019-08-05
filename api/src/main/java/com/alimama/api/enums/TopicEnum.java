@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public enum TopicEnum implements Serializable {
     /*定义topic*/
-    LOAN("cheguo.queues.loan.test");
+    LOAN("queues.loan.test");
 
 
     private String key;

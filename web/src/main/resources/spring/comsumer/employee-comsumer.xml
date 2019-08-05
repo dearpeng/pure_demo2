@@ -8,9 +8,9 @@
 
     <dubbo:reference id="employeeService" interface="com.alimama.api.service.IEmployeeService" version="1.0.0"
                      group="com.alimama.server" check="false" timeout="10000"/>
-    <dubbo:reference id="mqMessageProducerService" interface="com.alimama.api.service.IMqMessageProducerService"
-                     version="1.0.0"
-                     group="com.alimama.server" check="false" timeout="10000"/>
 
+
+    <dubbo:reference id="kafkaProducerService" interface="com.alimama.api.service.IKafkaProducerService" version="1.0.0"
+                     group="com.alimama.server" check="false" timeout="10000"/>
 
 </beans>
