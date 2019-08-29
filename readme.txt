@@ -2,4 +2,4 @@
 2.整合dubbo
 3.整合kafaka
 4.整合redis
-5
+5.整合mapstruct
