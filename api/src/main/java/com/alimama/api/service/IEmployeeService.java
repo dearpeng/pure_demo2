@@ -8,5 +8,5 @@ import java.util.List;
  * Created by PengWX on 2019/4/23.
  */
 public interface IEmployeeService {
-    List<Employee> getAllEmployee();
+    List<Employee> getAllEmployee(Long epId);
 }

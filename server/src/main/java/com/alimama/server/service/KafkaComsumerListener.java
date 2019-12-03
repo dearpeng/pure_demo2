@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class KafkaComsumerListener {
-    @KafkaListener(topics = "queues.loan.test", groupId = "queues.loan.test")
+   /* @KafkaListener(topics = "queues.loan.test", groupId = "queues.loan.test")
     public void receiveTopicMessage(String message){
         System.out.println("KafkaConsumer1 ---> 11111111111111111111：接收订阅者模式发送的消息，内容为：" + message);
     }
     @KafkaListener(topics = "queues.loan.test", groupId = "queues.loan.test")
     public void receiveTopicMessageTwo(String message){
         System.out.println("KafkaConsumer2 ---> 22222222222222222222：接收订阅者模式发送的消息，内容为：" + message);
-    }
+    }*/
 }

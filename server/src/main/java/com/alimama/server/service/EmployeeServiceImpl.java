@@ -25,8 +25,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     @Cacheable(value = "employeeListCache",keyGenerator = "keyGenerator")
-    public List<Employee> getAllEmployee() {
-        List<Employee> employees = employeeMapper.selectByExample(new EmployeeExample());
+    public List<Employee> getAllEmployee(Long epId) {
+        EmployeeExample employeeExample = new EmployeeExample();
+        employeeExample.createCriteria().andIdEqualTo(epId);
+        List<Employee> employees = employeeMapper.selectByExample(employeeExample);
         return employees;
     }
 
