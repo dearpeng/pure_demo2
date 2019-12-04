@@ -22,6 +22,8 @@ import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.TypeHandlerRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -37,6 +39,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MybatisResultInterceptor implements Interceptor {
 
+    private final static Logger logger = LoggerFactory.getLogger(MybatisResultInterceptor.class);
+
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         try {
@@ -51,7 +55,7 @@ public class MybatisResultInterceptor implements Interceptor {
             BoundSql boundSql = mappedStatement.getBoundSql(parameter);
             Configuration configuration = mappedStatement.getConfiguration();
             String sql = getSql(configuration, boundSql, sqlId);
-            System.out.println(sql);
+            logger.info("查询使用是sql语句:" + sql);
         } catch (Exception localException) {
         }
         return invocation.proceed();
@@ -59,6 +63,7 @@ public class MybatisResultInterceptor implements Interceptor {
 
     /**
      * 拼接了xml中sql的id(com.alimama.server.mapper.EmployeeMapper.selectByExample)和sql语句和参数合并一起的sql
+     *
      * @param configuration
      * @param boundSql
      * @param sqlId
