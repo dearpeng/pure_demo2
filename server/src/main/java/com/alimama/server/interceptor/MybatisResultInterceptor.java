@@ -45,7 +45,9 @@ public class MybatisResultInterceptor implements Interceptor {
             if (invocation.getArgs().length > 1) {
                 parameter = invocation.getArgs()[1];
             }
+            //com.alimama.server.mapper.EmployeeMapper.selectByExample  sql语句的sql全限定名
             String sqlId = mappedStatement.getId();
+            //查询的sql,参数依然是?代替
             BoundSql boundSql = mappedStatement.getBoundSql(parameter);
             Configuration configuration = mappedStatement.getConfiguration();
             String sql = getSql(configuration, boundSql, sqlId);
@@ -55,6 +57,13 @@ public class MybatisResultInterceptor implements Interceptor {
         return invocation.proceed();
     }
 
+    /**
+     * 拼接了xml中sql的id(com.alimama.server.mapper.EmployeeMapper.selectByExample)和sql语句和参数合并一起的sql
+     * @param configuration
+     * @param boundSql
+     * @param sqlId
+     * @return
+     */
     public static String getSql(Configuration configuration, BoundSql boundSql, String sqlId) {
         String sql = showSql(configuration, boundSql);
         StringBuilder str = new StringBuilder(100);
@@ -64,7 +73,7 @@ public class MybatisResultInterceptor implements Interceptor {
         return str.toString();
     }
 
-    private static String getParameterValue(Object obj) {
+    private static String getParameterValue(Object obj) {//转换请求参数类型成string
         String value = null;
         if ((obj instanceof String)) {
             value = "'" + obj.toString() + "'";
@@ -80,9 +89,9 @@ public class MybatisResultInterceptor implements Interceptor {
     }
 
     public static String showSql(Configuration configuration, BoundSql boundSql) {
-        Object parameterObject = boundSql.getParameterObject();
+        Object parameterObject = boundSql.getParameterObject();//获取参数对象
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
-        String sql = boundSql.getSql().replaceAll("[\\s]+", " ");
+        String sql = boundSql.getSql().replaceAll("[\\s]+", " ");//去除sql中的\s符号
         MetaObject metaObject;
         if ((CollectionUtils.isNotEmpty(parameterMappings)) && (parameterObject != null)) {
             TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
@@ -96,7 +105,9 @@ public class MybatisResultInterceptor implements Interceptor {
                         Object obj = metaObject.getValue(propertyName);
                         sql = sql.replaceFirst("\\?", Matcher.quoteReplacement(getParameterValue(obj)));
                     } else if (boundSql.hasAdditionalParameter(propertyName)) {
+                        //查询参数
                         Object obj = boundSql.getAdditionalParameter(propertyName);
+                        //将sql和参数拼接起来
                         sql = sql.replaceFirst("\\?", Matcher.quoteReplacement(getParameterValue(obj)));
                     } else {
                         sql = sql.replaceFirst("\\?", "缺失");
