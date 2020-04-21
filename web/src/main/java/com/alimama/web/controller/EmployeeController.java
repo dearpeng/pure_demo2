@@ -1,5 +1,6 @@
 package com.alimama.web.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alimama.api.enums.TopicEnum;
 import com.alimama.api.model.Employee;
 import com.alimama.api.service.IEmployeeService;
@@ -26,9 +27,16 @@ public class EmployeeController {
 
     @ResponseBody
     @RequestMapping("list")
-    public List<Employee> getEmployeeList(Long epId) {
+    public String getEmployeeList(Long epId) {
         logger.info("查询所有数据");
-        return employeeService.getAllEmployee(epId);
+        List<Employee> allEmployee = null;
+        try {
+            allEmployee = employeeService.getAllEmployee(epId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "查询客户列表失败!" + e.getMessage();
+        }
+        return JSON.toJSONString(allEmployee);
     }
 
     @RequestMapping("test")
