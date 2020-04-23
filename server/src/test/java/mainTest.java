@@ -11,6 +11,7 @@ import java.util.Date;
 public class mainTest {
 
     public static void main(String[] args) {
+        //测试mapstruct
         Employee employee = new Employee();
         employee.setId(1L);
         employee.setLastName("张三");

@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface IEmployeeService {
     List<Employee> getAllEmployee(Long epId) throws Exception;
+
+    Integer addEmployee(Employee employee);
 }

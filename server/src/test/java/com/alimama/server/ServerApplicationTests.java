@@ -9,40 +9,69 @@ import com.alimama.server.chains.CommandChain;
 import com.alimama.server.service.UserService;
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ServerApplicationTests {
+
     @Autowired
     private IEmployeeService employeeService;
+
     @Test
     public void contextLoads() {
-            Employee employee = new Employee();
-            employee.setId(1l);
-            employee.setLastName("张三");
-            employee.setBirth(new Date());
-            employee.setEmail("123123@qq.com");
-            employee.setDepartmentId(222l);
-            employee.setDepartmentName("技术部");
-            employee.setPassword("6666666");
-            employee.setGender(new Byte("0"));
-            employee.setSalt("111111111111");
-            EmployeeVo employeeVo = IEmployeeMapper.INSTANCE.employee2EmployeeVo(employee);
-            System.out.println(JSON.toJSONString(employeeVo));
+        Employee employee = new Employee();
+        employee.setId(1l);
+        employee.setLastName("张三");
+        employee.setBirth(new Date());
+        employee.setEmail("123123@qq.com");
+        employee.setDepartmentId(222l);
+        employee.setDepartmentName("技术部");
+        employee.setPassword("6666666");
+        employee.setGender(new Byte("0"));
+        employee.setSalt("111111111111");
+        EmployeeVo employeeVo = IEmployeeMapper.INSTANCE.employee2EmployeeVo(employee);
+        System.out.println(JSON.toJSONString(employeeVo));
     }
+
+    @Test
+    public void getEmployee() {
+        // 测试使用javax validation
+
+        Employee employee = new Employee();
+        employee.setId(null);
+        employee.setLastName(null);
+        employee.setBirth(new Date());
+        employee.setEmail("123123@qq.com");
+        employee.setDepartmentId(222L);
+        employee.setDepartmentName("技术部");
+        employee.setPassword("6666666");
+        employee.setGender(new Byte("0"));
+        employee.setSalt("111111111111");
+
+        employeeService.addEmployee(employee);
+    }
+
 
     @Test
     public void sentinelTest() {
         UserService.initFlowQpsRule();
-        for (int i=0 ;i < 100;i++) {
+        for (int i = 0; i < 100; i++) {
             try {
                 List<Employee> allEmployee = employeeService.getAllEmployee(1l);
             } catch (Exception e) {
@@ -56,10 +85,9 @@ public class ServerApplicationTests {
     public void test() throws Exception {
         CommandChain commandChain = new CommandChain();
         Context context = new ContextBase();
-        context.put("k1",1);
+        context.put("k1", 1);
         commandChain.execute(context);
     }
-
 
 
 }

@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,9 +53,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @SentinelResource(value = USER_RES, blockHandler = "exceptionHandler")
     public List<Employee> getAllEmployee(Long epId) throws Exception {
 
+        /**
+         * 测试使用 apache.commons.chain 来实现链式逻辑
+         */
         CommandChain commandChain = new CommandChain();
         Context context = new ContextBase();
-        context.put("k1",null);
+        context.put("k1", null);
         boolean execute = commandChain.execute(context);
 
 
@@ -68,6 +72,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employeeExample.createCriteria().andIdEqualTo(epId);
         List<Employee> employees = employeeMapper.selectByExample(employeeExample);
         return employees;
+    }
+
+    @Override
+    public Integer addEmployee(@Valid Employee employee) {
+        return employeeMapper.insert(employee);
     }
 
     /**
