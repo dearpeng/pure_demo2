@@ -8,3 +8,4 @@
 7.logback 格式化sql(拼接sql和参数)
 8.sentinel限流,降权,熔断(@SentinelResource)
 9.引入管道(BeanConfig-->submitPipeline),Apache commons-chain(CommandChain)两种方式来处理链式逻辑问题.
+10.加入springboot的validation校验参数   https://blog.csdn.net/csdn13257081409/article/details/105716313

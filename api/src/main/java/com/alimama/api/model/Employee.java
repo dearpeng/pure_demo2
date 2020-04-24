@@ -3,6 +3,10 @@ package com.alimama.api.model;
 
 
 
+import com.alimama.api.validations.EmailValidation;
+import lombok.NonNull;
+
+import javax.validation.MessageInterpolator;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,24 +15,27 @@ public class Employee implements Serializable {
     /**
      * 主键
      */
-    @NotNull(message = "用户主键不能为空!")
+//    @NotNull(message = "用户主键不能为空!")
     private Long id;
 
     /**
      * 名字
      */
-    @NotNull(message = "用户姓名不能为空!")
+//    @NotNull(message = "用户姓名不能为空!")
     private String lastName;
 
     /**
      * 性别 0:女 1:男
      */
-    @NotNull(message = "用户性别不能为空!")
+//    @NotNull(message = "用户性别不能为空!")
     private Byte gender;
 
     /**
+     * EmailValidation 这个是自定义注解
      * 邮箱
      */
+    @NotNull(message = "邮编不能为空!")
+    @EmailValidation(message = "会不会填邮编啊")
     private String email;
 
     /**

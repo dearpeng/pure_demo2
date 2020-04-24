@@ -25,9 +25,10 @@ public class HelloController {
 
     @GetMapping("setsession")
     @ResponseBody
-    public String setSession(HttpSession session) {
-        session.setAttribute("123456", "zhangsan");
-        return port;
+    public String setSession(HttpSession session) throws Exception {
+        throw new Exception("controller异常!");
+       /* session.setAttribute("123456", "zhangsan");
+        return port;*/
     }
 
     @GetMapping("getsession")

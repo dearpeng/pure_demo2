@@ -39,8 +39,9 @@ public class EmployeeController {
 
     @ResponseBody
     @RequestMapping("list")
-    public String getEmployeeList(Long epId) {
-        logger.info("查询所有数据");
+    public String getEmployeeList(Long epId) throws Exception{
+        throw new Exception("测试查询异常全局捕获!");
+        /*logger.info("查询所有数据");
         List<Employee> allEmployee = null;
         try {
             allEmployee = employeeService.getAllEmployee(epId);
@@ -48,7 +49,7 @@ public class EmployeeController {
             e.printStackTrace();
             return "查询客户列表失败!" + e.getMessage();
         }
-        return JSON.toJSONString(allEmployee);
+        return JSON.toJSONString(allEmployee);*/
     }
 
     @RequestMapping("test")
@@ -58,16 +59,6 @@ public class EmployeeController {
         return num;
     }
 
-    /**
-     * validation异常捕获处理 （可能是MethodArgumentNotValidException或 BindException）
-     *
-     * @param e MethodArgumentNotValidException 异常
-     * @return com.example.common.bean.JsonResult
-     */
-    @ExceptionHandler(value =  Exception.class)
-    public String serviceHandle( Exception e) {
-        return e.getLocalizedMessage()+e.getMessage();
-    }
 
     @RequestMapping("addEmp")
     @ResponseBody
