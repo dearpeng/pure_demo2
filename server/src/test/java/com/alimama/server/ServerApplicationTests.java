@@ -73,7 +73,7 @@ public class ServerApplicationTests {
         UserService.initFlowQpsRule();
         for (int i = 0; i < 100; i++) {
             try {
-                List<Employee> allEmployee = employeeService.getAllEmployee(1l);
+                List<Employee> allEmployee = employeeService.getAllEmployee();
             } catch (Exception e) {
                 e.printStackTrace();
             }

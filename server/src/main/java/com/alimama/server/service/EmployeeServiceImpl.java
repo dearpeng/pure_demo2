@@ -41,7 +41,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     /**
-     * @param epId
      * @return
      * @SentinelResource(value = "getAllEmployee", blockHandler = "exceptionHandler")
      * value资源名,必填
@@ -49,27 +48,26 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * 被注解的方法相同另外加上BlockException e参数,参考exceptionHandler()方法
      */
     @Override
-    @Cacheable(value = "employeeListCache", keyGenerator = "keyGenerator")
-    @SentinelResource(value = USER_RES, blockHandler = "exceptionHandler")
-    public List<Employee> getAllEmployee(Long epId) throws Exception {
+//    @Cacheable(value = "employeeListCache", keyGenerator = "keyGenerator") //缓存
+//    @SentinelResource(value = USER_RES, blockHandler = "exceptionHandler") //sentinel 限流
+    public List<Employee> getAllEmployee() throws Exception {
 
         /**
-         * 测试使用 apache.commons.chain 来实现链式逻辑
+         * 不要删除 测试使用 apache.commons.chain 来实现链式逻辑
          */
-        CommandChain commandChain = new CommandChain();
+        /*CommandChain commandChain = new CommandChain();
         Context context = new ContextBase();
         context.put("k1", null);
-        boolean execute = commandChain.execute(context);
+        boolean execute = commandChain.execute(context);*/
 
 
-        //简单使用管道校验参数是否为空
-        DataConformContext context1 = new DataConformContext();
+        //不要删除  简单使用管道校验参数是否为空
+       /* DataConformContext context1 = new DataConformContext();
         context1.setBusinessId(null);
-        submitPipeline.handle(context1);
+        submitPipeline.handle(context1);*/
 
 
         EmployeeExample employeeExample = new EmployeeExample();
-        employeeExample.createCriteria().andIdEqualTo(epId);
         List<Employee> employees = employeeMapper.selectByExample(employeeExample);
         return employees;
     }
@@ -77,6 +75,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public Integer addEmployee(@Valid Employee employee) {
         return employeeMapper.insert(employee);
+    }
+
+    @Override
+    public List<Employee> selectByExample(EmployeeExample example) {
+        return employeeMapper.selectByExample(example);
+    }
+
+    @Override
+    public Integer deleteById(Long id) {
+        return employeeMapper.deleteByPrimaryKey(id);
     }
 
     /**

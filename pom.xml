@@ -19,4 +19,17 @@
         <module>web</module>
     </modules>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus-snapshots</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.27.3:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.27.3:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
