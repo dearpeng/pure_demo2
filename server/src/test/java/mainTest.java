@@ -1,7 +1,7 @@
 import com.alibaba.fastjson.JSON;
+import com.alimama.api.dataConverts.IEmployeeDataConverter;
 import com.alimama.api.model.Employee;
 import com.alimama.api.model.EmployeeVo;
-import com.alimama.api.service.IEmployeeMapper;
 
 import java.util.Date;
 
@@ -22,7 +22,7 @@ public class mainTest {
         employee.setPassword("6666666");
         employee.setGender(new Byte("0"));
         employee.setSalt("111111111111");
-        EmployeeVo employeeVo = IEmployeeMapper.INSTANCE.employee2EmployeeVo(employee);
+        EmployeeVo employeeVo = IEmployeeDataConverter.INSTANCE.employee2EmployeeVo(employee);
         System.out.println(JSON.toJSONString(employeeVo));
     }
 }

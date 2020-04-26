@@ -1,28 +1,22 @@
 package com.alimama.server;
 
 import com.alibaba.fastjson.JSON;
+import com.alimama.api.dataConverts.IEmployeeDataConverter;
 import com.alimama.api.model.Employee;
 import com.alimama.api.model.EmployeeVo;
-import com.alimama.api.service.IEmployeeMapper;
 import com.alimama.api.service.IEmployeeService;
 import com.alimama.server.chains.CommandChain;
 import com.alimama.server.service.UserService;
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -45,7 +39,7 @@ public class ServerApplicationTests {
         employee.setPassword("6666666");
         employee.setGender(new Byte("0"));
         employee.setSalt("111111111111");
-        EmployeeVo employeeVo = IEmployeeMapper.INSTANCE.employee2EmployeeVo(employee);
+        EmployeeVo employeeVo = IEmployeeDataConverter.INSTANCE.employee2EmployeeVo(employee);
         System.out.println(JSON.toJSONString(employeeVo));
     }
 

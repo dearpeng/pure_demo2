@@ -7,6 +7,19 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:service interface="com.alimama.api.service.IEmployeeService" ref="employeeService" group="com.alimama.server"
                    version="1.0.0"/>
+
+    <dubbo:service interface="com.alimama.api.service.IRoleService" ref="roleService" group="com.alimama.server"
+                   version="1.0.0"/>
+
+    <dubbo:service interface="com.alimama.api.service.IEmployerRoleService" ref="employerRoleService" group="com.alimama.server"
+                   version="1.0.0"/>
+
+    <dubbo:service interface="com.alimama.api.service.IEmployerService" ref="employerService" group="com.alimama.server"
+                   version="1.0.0"/>
+
+    <dubbo:service interface="com.alimama.api.service.IDepartmentService" ref="departmentService" group="com.alimama.server"
+                   version="1.0.0"/>
+
     <dubbo:service interface="com.alimama.api.service.IKafkaProducerService" ref="kafkaProducerService" group="com.alimama.server"
                    version="1.0.0"/>
 </beans>

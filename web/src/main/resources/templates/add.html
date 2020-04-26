@@ -47,11 +47,11 @@
 
 		<div class="container-fluid">
 			<div class="row">
-				<div th:replace="commons/common::toolbar(activeuri='emps')"></div>
+				<div th:replace="commons/common::toolbar(activeuri='/employee/emps')"></div>
 
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<form th:action="@{/emp}" method="post">
+					<form th:action="@{/employee/emp}" method="post">
 						<!--当修改的时候是发送put请求,此时是新增是post请求,如果修改也是用同一个页面就要修改请求方式-->
 						<!--使用put请求修改数据
 							form没有put的method,但是springmvc提供了一种自定义请求方式的解决方案
@@ -88,7 +88,7 @@
 						</div>
 						<div class="form-group">
 							<label>Birth</label>
-							<input name="birth" th:value="${emp!=null}?${#dates.format(emp.birth,'yyyy-MM-dd HH:mm')}" type="text" class="form-control" placeholder="zhangsan">
+							<input name="birth" th:value="${emp!=null}?${#dates.format(emp.birth,'yyyy-MM-dd HH:mm')}" type="text" class="form-control" placeholder="2020-06-06">
 						</div>
 						<button type="submit" class="btn btn-primary" th:text="${emp!=null}?'编辑':'添加'">添加</button>
 					</form>

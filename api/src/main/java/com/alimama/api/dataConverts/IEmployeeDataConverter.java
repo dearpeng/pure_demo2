@@ -1,4 +1,4 @@
-package com.alimama.api.service;
+package com.alimama.api.dataConverts;
 
 
 import com.alimama.api.model.Employee;
@@ -8,15 +8,13 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
-import javax.xml.transform.Source;
-
 /**
  * Created by PengWX on 2019/8/29.
  */
 @Mapper
-public interface IEmployeeMapper {
+public interface IEmployeeDataConverter {
 
-    IEmployeeMapper INSTANCE = Mappers.getMapper(IEmployeeMapper.class);
+    IEmployeeDataConverter INSTANCE = Mappers.getMapper(IEmployeeDataConverter.class);
 
 
     @Mappings(
