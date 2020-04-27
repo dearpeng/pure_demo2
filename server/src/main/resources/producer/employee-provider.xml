@@ -14,6 +14,12 @@
     <dubbo:service interface="com.alimama.api.service.IEmployerRoleService" ref="employerRoleService" group="com.alimama.server"
                    version="1.0.0"/>
 
+    <dubbo:service interface="com.alimama.api.service.IPermissionService" ref="permissionService" group="com.alimama.server"
+                   version="1.0.0"/>
+
+    <dubbo:service interface="com.alimama.api.service.IRolePermissionService" ref="rolePermissionService" group="com.alimama.server"
+                   version="1.0.0"/>
+
     <dubbo:service interface="com.alimama.api.service.IEmployerService" ref="employerService" group="com.alimama.server"
                    version="1.0.0"/>
 

@@ -19,18 +19,18 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.cgw360.cls.model.approve"
+        <javaModelGenerator targetPackage="com"
                             targetProject="C:\Users\ftcs\Desktop\generatecode\">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.cgw360.cls.model.approve"
+        <sqlMapGenerator targetPackage="com"
                          targetProject="C:\Users\ftcs\Desktop\generatecode\">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cgw360.cls.model.approve"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com"
                              targetProject="C:\Users\ftcs\Desktop\generatecode\">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
@@ -43,7 +43,7 @@
         <!--&lt;!&ndash;自动生成主键，可以代替useGeneratedKeys，大家不用删&ndash;&gt;-->
         <!--<generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>-->
         <!--</table>-->
-        <table tableName="employer" domainObjectName="Employer">
+        <table tableName="role_permission" domainObjectName="RolePermission">
             <!--自动生成主键，可以代替useGeneratedKeys，大家不用删-->
             <generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>
         </table>
