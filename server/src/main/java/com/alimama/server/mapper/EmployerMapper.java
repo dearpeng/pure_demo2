@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.alimama.api.model.Employer;
 import com.alimama.api.model.EmployerExample;
+import com.alimama.api.modelVOs.EmployerVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -31,4 +32,6 @@ public interface EmployerMapper{
     int updateByPrimaryKeySelective(Employer record);
 
     int updateByPrimaryKey(Employer record);
+
+    EmployerVO selectEmployerAndPermissions(String mobile);
 }

@@ -8,6 +8,8 @@ import com.alimama.api.service.IDepartmentService;
 import com.alimama.api.service.IEmployeeService;
 import com.alimama.api.utils.WebUtil;
 import com.alimama.web.globalErrorHandler.BizException;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +98,8 @@ public class EmployeeController {
      * @param employee
      * @return
      */
+    @RequiresRoles("admin")
+    @RequiresPermissions("add")
     @RequestMapping("/emp")
     public String addEmp(Employee employee){
         employeeService.addEmployee(employee);

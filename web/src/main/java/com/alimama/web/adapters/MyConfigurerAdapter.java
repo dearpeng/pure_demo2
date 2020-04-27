@@ -17,12 +17,12 @@ public class MyConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("").excludePathPatterns("/index","/index.html","/","/user/login","/signOut");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("").excludePathPatterns("/index","/index.html","/","/employer/user/login","/signOut");
         super.addInterceptors(registry);
     }
 
     //所有的WebMvcConfigurerAdapter组件都会一起起作用，所以自己定义一个adapter
-    @Bean //将组件注册在容器
+    /*@Bean //将组件注册在容器
     public WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
         WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
             //这边写就不用单独写controller转到登陆页面
@@ -32,16 +32,16 @@ public class MyConfigurerAdapter extends WebMvcConfigurerAdapter {
                 registry.addViewController("/index.html").setViewName("index");
                 registry.addViewController("/main.html").setViewName("dashboard");
             }
-            /*@Override
-            public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("*").excludePathPatterns("/index","/","/user/login");
-                super.addInterceptors(registry);
-            }*/
+//            @Override
+//            public void addInterceptors(InterceptorRegistry registry) {
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("*").excludePathPatterns("/index","/","/user/login");
+//                super.addInterceptors(registry);
+//            }
 
         };
 
         return adapter;
-    }
+    }*/
 
    /* @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

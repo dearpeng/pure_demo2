@@ -1,6 +1,7 @@
 package com.alimama.api.service;
 
 import com.alimama.api.model.Employer;
+import com.alimama.api.model.Permission;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface IPermissionService {
 
+    List<Permission> selectPermissionsByPermissionId(List<Long> permissionIds);
 }

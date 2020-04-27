@@ -1,6 +1,7 @@
 package com.alimama.web.globalErrorHandler;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,4 +50,15 @@ public class MyGlobalExceptionHandler {
         jsonObject.put("msg", e.getMessage());
         return jsonObject;
     }*/
+
+    /**
+     * shiro异常捕捉
+     * @param e
+     * @return
+     */
+    @ExceptionHandler
+    @ResponseBody
+    public String ErrorHandler(AuthorizationException e) {
+        return "没有通过权限验证！";
+    }
 }

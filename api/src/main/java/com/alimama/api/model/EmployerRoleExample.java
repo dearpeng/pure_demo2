@@ -69,7 +69,7 @@ public class EmployerRoleExample implements Serializable {
      * org.mybatis.generator.config.Context@12d3a4e9
      * 
      * @authpr gaowenlin
-     * @version 1.0 2020-04-26
+     * @version 1.0 2020-04-27
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -113,192 +113,122 @@ public class EmployerRoleExample implements Serializable {
         }
 
         public Criteria andIdIsNull() {
-            addCriterion("Id is null");
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
         public Criteria andIdIsNotNull() {
-            addCriterion("Id is not null");
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("Id =", value, "id");
+        public Criteria andIdEqualTo(Long value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("Id <>", value, "id");
+        public Criteria andIdNotEqualTo(Long value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("Id >", value, "id");
+        public Criteria andIdGreaterThan(Long value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Id >=", value, "id");
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("Id <", value, "id");
+        public Criteria andIdLessThan(Long value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("Id <=", value, "id");
+        public Criteria andIdLessThanOrEqualTo(Long value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("Id in", values, "id");
+        public Criteria andIdIn(List<Long> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("Id not in", values, "id");
+        public Criteria andIdNotIn(List<Long> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("Id between", value1, value2, "id");
+        public Criteria andIdBetween(Long value1, Long value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("Id not between", value1, value2, "id");
+        public Criteria andIdNotBetween(Long value1, Long value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+        public Criteria andEmployerIdIsNull() {
+            addCriterion("employer_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+        public Criteria andEmployerIdIsNotNull() {
+            addCriterion("employer_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Integer value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andEmployerIdEqualTo(Long value) {
+            addCriterion("employer_id =", value, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Integer value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andEmployerIdNotEqualTo(Long value) {
+            addCriterion("employer_id <>", value, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Integer value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andEmployerIdGreaterThan(Long value) {
+            addCriterion("employer_id >", value, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andEmployerIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("employer_id >=", value, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Integer value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andEmployerIdLessThan(Long value) {
+            addCriterion("employer_id <", value, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andEmployerIdLessThanOrEqualTo(Long value) {
+            addCriterion("employer_id <=", value, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Integer> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andEmployerIdIn(List<Long> values) {
+            addCriterion("employer_id in", values, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Integer> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andEmployerIdNotIn(List<Long> values) {
+            addCriterion("employer_id not in", values, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Integer value1, Integer value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andEmployerIdBetween(Long value1, Long value2) {
+            addCriterion("employer_id between", value1, value2, "employerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameIsNull() {
-            addCriterion("realname is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameIsNotNull() {
-            addCriterion("realname is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameEqualTo(String value) {
-            addCriterion("realname =", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameNotEqualTo(String value) {
-            addCriterion("realname <>", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameGreaterThan(String value) {
-            addCriterion("realname >", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameGreaterThanOrEqualTo(String value) {
-            addCriterion("realname >=", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameLessThan(String value) {
-            addCriterion("realname <", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameLessThanOrEqualTo(String value) {
-            addCriterion("realname <=", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameLike(String value) {
-            addCriterion("realname like", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameNotLike(String value) {
-            addCriterion("realname not like", value, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameIn(List<String> values) {
-            addCriterion("realname in", values, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameNotIn(List<String> values) {
-            addCriterion("realname not in", values, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameBetween(String value1, String value2) {
-            addCriterion("realname between", value1, value2, "realname");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealnameNotBetween(String value1, String value2) {
-            addCriterion("realname not between", value1, value2, "realname");
+        public Criteria andEmployerIdNotBetween(Long value1, Long value2) {
+            addCriterion("employer_id not between", value1, value2, "employerId");
             return (Criteria) this;
         }
 
@@ -312,173 +242,53 @@ public class EmployerRoleExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdEqualTo(Integer value) {
+        public Criteria andRoleIdEqualTo(Long value) {
             addCriterion("role_id =", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotEqualTo(Integer value) {
+        public Criteria andRoleIdNotEqualTo(Long value) {
             addCriterion("role_id <>", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThan(Integer value) {
+        public Criteria andRoleIdGreaterThan(Long value) {
             addCriterion("role_id >", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andRoleIdGreaterThanOrEqualTo(Long value) {
             addCriterion("role_id >=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThan(Integer value) {
+        public Criteria andRoleIdLessThan(Long value) {
             addCriterion("role_id <", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanOrEqualTo(Integer value) {
+        public Criteria andRoleIdLessThanOrEqualTo(Long value) {
             addCriterion("role_id <=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIn(List<Integer> values) {
+        public Criteria andRoleIdIn(List<Long> values) {
             addCriterion("role_id in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotIn(List<Integer> values) {
+        public Criteria andRoleIdNotIn(List<Long> values) {
             addCriterion("role_id not in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdBetween(Integer value1, Integer value2) {
+        public Criteria andRoleIdBetween(Long value1, Long value2) {
             addCriterion("role_id between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andRoleIdNotBetween(Long value1, Long value2) {
             addCriterion("role_id not between", value1, value2, "roleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdIsNull() {
-            addCriterion("branch_company_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdIsNotNull() {
-            addCriterion("branch_company_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdEqualTo(Integer value) {
-            addCriterion("branch_company_id =", value, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdNotEqualTo(Integer value) {
-            addCriterion("branch_company_id <>", value, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdGreaterThan(Integer value) {
-            addCriterion("branch_company_id >", value, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("branch_company_id >=", value, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdLessThan(Integer value) {
-            addCriterion("branch_company_id <", value, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdLessThanOrEqualTo(Integer value) {
-            addCriterion("branch_company_id <=", value, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdIn(List<Integer> values) {
-            addCriterion("branch_company_id in", values, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdNotIn(List<Integer> values) {
-            addCriterion("branch_company_id not in", values, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdBetween(Integer value1, Integer value2) {
-            addCriterion("branch_company_id between", value1, value2, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBranchCompanyIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("branch_company_id not between", value1, value2, "branchCompanyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdIsNull() {
-            addCriterion("business_group_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdIsNotNull() {
-            addCriterion("business_group_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdEqualTo(Integer value) {
-            addCriterion("business_group_id =", value, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdNotEqualTo(Integer value) {
-            addCriterion("business_group_id <>", value, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdGreaterThan(Integer value) {
-            addCriterion("business_group_id >", value, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("business_group_id >=", value, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdLessThan(Integer value) {
-            addCriterion("business_group_id <", value, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdLessThanOrEqualTo(Integer value) {
-            addCriterion("business_group_id <=", value, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdIn(List<Integer> values) {
-            addCriterion("business_group_id in", values, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdNotIn(List<Integer> values) {
-            addCriterion("business_group_id not in", values, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdBetween(Integer value1, Integer value2) {
-            addCriterion("business_group_id between", value1, value2, "businessGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessGroupIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("business_group_id not between", value1, value2, "businessGroupId");
             return (Criteria) this;
         }
 
@@ -677,7 +487,7 @@ public class EmployerRoleExample implements Serializable {
      * org.mybatis.generator.config.Context@12d3a4e9
      * 
      * @authpr gaowenlin
-     * @version 1.0 2020-04-26
+     * @version 1.0 2020-04-27
      */
     public static class Criteria extends GeneratedCriteria implements Serializable{
 
@@ -690,7 +500,7 @@ public class EmployerRoleExample implements Serializable {
      * org.mybatis.generator.config.Context@12d3a4e9
      * 
      * @authpr gaowenlin
-     * @version 1.0 2020-04-26
+     * @version 1.0 2020-04-27
      */
     public static class Criterion implements Serializable{
         private String condition;

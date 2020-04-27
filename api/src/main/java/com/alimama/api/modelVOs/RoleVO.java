@@ -1,4 +1,4 @@
-package com.alimama.web.modelVOs;
+package com.alimama.api.modelVOs;
 
 import com.alimama.api.model.Role;
 

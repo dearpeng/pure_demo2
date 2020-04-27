@@ -2,12 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.alimama.server.mapper.EmployerRoleMapper" >
   <resultMap id="BaseResultMap" type="com.alimama.api.model.EmployerRole" >
-    <id column="Id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="realname" property="realname" jdbcType="VARCHAR" />
-    <result column="role_id" property="roleId" jdbcType="INTEGER" />
-    <result column="branch_company_id" property="branchCompanyId" jdbcType="INTEGER" />
-    <result column="business_group_id" property="businessGroupId" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="employer_id" property="employerId" jdbcType="BIGINT" />
+    <result column="role_id" property="roleId" jdbcType="BIGINT" />
     <result column="note" property="note" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
@@ -71,8 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    Id, user_id, realname, role_id, branch_company_id, business_group_id, note, create_time, 
-    modify_time
+    id, employer_id, role_id, note, create_time, modify_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.alimama.api.model.EmployerRoleExample" >
     select
@@ -88,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from employer_role
-    where Id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from employer_role
-    where Id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.alimama.api.model.EmployerRoleExample" >
     delete from employer_role
@@ -105,36 +101,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.alimama.api.model.EmployerRole" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into employer_role (user_id, realname, role_id, 
-      branch_company_id, business_group_id, note, 
+    insert into employer_role (employer_id, role_id, note, 
       create_time, modify_time)
-    values (#{userId,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}, 
-      #{branchCompanyId,jdbcType=INTEGER}, #{businessGroupId,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, 
+    values (#{employerId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{note,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.alimama.api.model.EmployerRole" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into employer_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="realname != null" >
-        realname,
+      <if test="employerId != null" >
+        employer_id,
       </if>
       <if test="roleId != null" >
         role_id,
-      </if>
-      <if test="branchCompanyId != null" >
-        branch_company_id,
-      </if>
-      <if test="businessGroupId != null" >
-        business_group_id,
       </if>
       <if test="note != null" >
         note,
@@ -147,20 +132,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="realname != null" >
-        #{realname,jdbcType=VARCHAR},
+      <if test="employerId != null" >
+        #{employerId,jdbcType=BIGINT},
       </if>
       <if test="roleId != null" >
-        #{roleId,jdbcType=INTEGER},
-      </if>
-      <if test="branchCompanyId != null" >
-        #{branchCompanyId,jdbcType=INTEGER},
-      </if>
-      <if test="businessGroupId != null" >
-        #{businessGroupId,jdbcType=INTEGER},
+        #{roleId,jdbcType=BIGINT},
       </if>
       <if test="note != null" >
         #{note,jdbcType=VARCHAR},
@@ -183,22 +159,13 @@
     update employer_role
     <set >
       <if test="record.id != null" >
-        Id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
-      </if>
-      <if test="record.realname != null" >
-        realname = #{record.realname,jdbcType=VARCHAR},
+      <if test="record.employerId != null" >
+        employer_id = #{record.employerId,jdbcType=BIGINT},
       </if>
       <if test="record.roleId != null" >
-        role_id = #{record.roleId,jdbcType=INTEGER},
-      </if>
-      <if test="record.branchCompanyId != null" >
-        branch_company_id = #{record.branchCompanyId,jdbcType=INTEGER},
-      </if>
-      <if test="record.businessGroupId != null" >
-        business_group_id = #{record.businessGroupId,jdbcType=INTEGER},
+        role_id = #{record.roleId,jdbcType=BIGINT},
       </if>
       <if test="record.note != null" >
         note = #{record.note,jdbcType=VARCHAR},
@@ -216,12 +183,9 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update employer_role
-    set Id = #{record.id,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      realname = #{record.realname,jdbcType=VARCHAR},
-      role_id = #{record.roleId,jdbcType=INTEGER},
-      branch_company_id = #{record.branchCompanyId,jdbcType=INTEGER},
-      business_group_id = #{record.businessGroupId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      employer_id = #{record.employerId,jdbcType=BIGINT},
+      role_id = #{record.roleId,jdbcType=BIGINT},
       note = #{record.note,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
@@ -232,20 +196,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.alimama.api.model.EmployerRole" >
     update employer_role
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="realname != null" >
-        realname = #{realname,jdbcType=VARCHAR},
+      <if test="employerId != null" >
+        employer_id = #{employerId,jdbcType=BIGINT},
       </if>
       <if test="roleId != null" >
-        role_id = #{roleId,jdbcType=INTEGER},
-      </if>
-      <if test="branchCompanyId != null" >
-        branch_company_id = #{branchCompanyId,jdbcType=INTEGER},
-      </if>
-      <if test="businessGroupId != null" >
-        business_group_id = #{businessGroupId,jdbcType=INTEGER},
+        role_id = #{roleId,jdbcType=BIGINT},
       </if>
       <if test="note != null" >
         note = #{note,jdbcType=VARCHAR},
@@ -257,18 +212,15 @@
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where Id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.alimama.api.model.EmployerRole" >
     update employer_role
-    set user_id = #{userId,jdbcType=INTEGER},
-      realname = #{realname,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=INTEGER},
-      branch_company_id = #{branchCompanyId,jdbcType=INTEGER},
-      business_group_id = #{businessGroupId,jdbcType=INTEGER},
+    set employer_id = #{employerId,jdbcType=BIGINT},
+      role_id = #{roleId,jdbcType=BIGINT},
       note = #{note,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where Id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

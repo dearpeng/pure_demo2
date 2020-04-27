@@ -7,32 +7,17 @@ public class EmployerRole implements Serializable {
     /**
      * 
      */
-    private Integer id;
+    private Long id;
 
     /**
-     * 用户ID
+     * 用户employer表ID
      */
-    private Integer userId;
-
-    /**
-     * 姓名
-     */
-    private String realname;
+    private Long employerId;
 
     /**
      * 角色ID
      */
-    private Integer roleId;
-
-    /**
-     * 分公司ID
-     */
-    private Integer branchCompanyId;
-
-    /**
-     * 业务组ID
-     */
-    private Integer businessGroupId;
+    private Long roleId;
 
     /**
      * 说明
@@ -52,85 +37,43 @@ public class EmployerRole implements Serializable {
     /**
      * 获取
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * 设置
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取用户ID
+     * 获取用户employer表ID
      */
-    public Integer getUserId() {
-        return userId;
+    public Long getEmployerId() {
+        return employerId;
     }
 
     /**
-     * 设置用户ID
+     * 设置用户employer表ID
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * 获取姓名
-     */
-    public String getRealname() {
-        return realname;
-    }
-
-    /**
-     * 设置姓名
-     */
-    public void setRealname(String realname) {
-        this.realname = realname == null ? null : realname.trim();
+    public void setEmployerId(Long employerId) {
+        this.employerId = employerId;
     }
 
     /**
      * 获取角色ID
      */
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
     /**
      * 设置角色ID
      */
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
-    }
-
-    /**
-     * 获取分公司ID
-     */
-    public Integer getBranchCompanyId() {
-        return branchCompanyId;
-    }
-
-    /**
-     * 设置分公司ID
-     */
-    public void setBranchCompanyId(Integer branchCompanyId) {
-        this.branchCompanyId = branchCompanyId;
-    }
-
-    /**
-     * 获取业务组ID
-     */
-    public Integer getBusinessGroupId() {
-        return businessGroupId;
-    }
-
-    /**
-     * 设置业务组ID
-     */
-    public void setBusinessGroupId(Integer businessGroupId) {
-        this.businessGroupId = businessGroupId;
     }
 
     /**
