@@ -4,11 +4,14 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alimama.api.model.Employee;
 import com.alimama.api.model.EmployeeExample;
+import com.alimama.api.myDataPage.DataPage;
 import com.alimama.api.pipeLine.PipeLine;
 import com.alimama.api.service.IEmployeeService;
 import com.alimama.server.chains.CommandChain;
 import com.alimama.server.context.DataConformContext;
 import com.alimama.server.mapper.EmployeeMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +53,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
 //    @Cacheable(value = "employeeListCache", keyGenerator = "keyGenerator") //缓存
 //    @SentinelResource(value = USER_RES, blockHandler = "exceptionHandler") //sentinel 限流
-    public List<Employee> getAllEmployee() throws Exception {
+    public PageInfo<Employee> getAllEmployee(Integer page, Integer limit) throws Exception {
 
         /**
          * 不要删除 测试使用 apache.commons.chain 来实现链式逻辑
@@ -68,8 +71,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
         EmployeeExample employeeExample = new EmployeeExample();
-        List<Employee> employees = employeeMapper.selectByExample(employeeExample);
-        return employees;
+
+        PageHelper.startPage(page, limit);
+        List<Employee> employees = employeeMapper.selectPageByExample(employeeExample,page,limit);
+        return new PageInfo<Employee>(employees);
+
     }
 
     @Override
@@ -85,6 +91,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public Integer deleteById(Long id) {
         return employeeMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Employee> getAllEmployees(Integer page, Integer limit) {
+        return employeeMapper.selectPage(page,limit);
     }
 
     /**

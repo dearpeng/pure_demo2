@@ -1,4 +1,4 @@
-package com.alimama.api.pages;
+package com.alimama.api.myDataPage;
 
 import java.util.List;
 

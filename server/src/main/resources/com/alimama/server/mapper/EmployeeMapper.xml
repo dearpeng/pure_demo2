@@ -75,9 +75,6 @@
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.alimama.api.model.EmployeeExample" >
     select
-    <if test="distinct" >
-      distinct
-    </if>
     <include refid="Base_Column_List" />
     from employee
     <if test="_parameter != null" >
@@ -270,4 +267,15 @@
       salt = #{salt,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectPageByExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from employee
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from employee
+  </select>
 </mapper>

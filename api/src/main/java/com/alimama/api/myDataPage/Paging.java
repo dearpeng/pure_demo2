@@ -1,4 +1,4 @@
-package com.alimama.api.pages;
+package com.alimama.api.myDataPage;
 
 import java.io.Serializable;
 
@@ -20,6 +20,12 @@ public class Paging implements Serializable {
 	private Integer totalItem;
 
 	private String orderBy;
+
+	/**
+	 * 限制count最大值，0表示没有限制
+	 * （可避免count统计时全表扫描）
+	 */
+	private Long maxCount = 0L;
 
 	public Paging() {
 
@@ -90,4 +96,11 @@ public class Paging implements Serializable {
 		this.orderBy = orderBy;
 	}
 
+	public Long getMaxCount() {
+		return maxCount;
+	}
+
+	public void setMaxCount(Long maxCount) {
+		this.maxCount = maxCount;
+	}
 }

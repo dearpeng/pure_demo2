@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimpleDateFormatSerializer;
-import com.alimama.api.pages.DataPage;
+import com.alimama.api.myDataPage.DataPage;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletRequest;
@@ -84,6 +84,12 @@ public class WebUtil {
         resultJson.put(JSON_RESULT_STATUS_CODE_TWO, status);
         return resultJson.toJSONString();
     }
+    public static String getSuccessJson( Integer code, Object data) {
+        JSONObject resultJson = new JSONObject();
+        resultJson.put(JSON_RESULT_STATUS_CODE, code);
+        resultJson.put(JSON_RESULT_DATA, data);
+        return resultJson.toJSONString();
+    }
 
     /**
      * 生成一个成功的json
@@ -147,7 +153,9 @@ public class WebUtil {
         resultJson.put(JSON_RESULT_DATA, data);
         resultJson.put(JSON_RESULT_TOTAL, totalItem);
 
-        if (data == null) return resultJson.toJSONString();
+        if (data == null){
+            return resultJson.toJSONString();
+        }
 
         if (dateFmt == null) {
             return JSON.toJSONString(resultJson, SerializerFeature.WriteDateUseDateFormat, SerializerFeature.DisableCircularReferenceDetect);

@@ -30,4 +30,8 @@ public interface EmployeeMapper {
     int updateByPrimaryKeySelective(Employee record);
 
     int updateByPrimaryKey(Employee record);
+
+    List<Employee> selectPageByExample(EmployeeExample employeeExample, @Param("pageNum")int page, @Param("pageSize")int limit);
+
+    List<Employee> selectPage( @Param("pageNum")int page, @Param("pageSize")int limit);
 }

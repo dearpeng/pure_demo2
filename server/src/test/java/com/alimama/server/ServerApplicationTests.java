@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alimama.api.dataConverts.IEmployeeDataConverter;
 import com.alimama.api.model.Employee;
 import com.alimama.api.model.EmployeeVo;
+import com.alimama.api.myDataPage.DataPage;
 import com.alimama.api.service.IEmployeeService;
 import com.alimama.server.chains.CommandChain;
 import com.alimama.server.service.UserService;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
 import org.junit.Test;
@@ -67,7 +69,7 @@ public class ServerApplicationTests {
         UserService.initFlowQpsRule();
         for (int i = 0; i < 100; i++) {
             try {
-                List<Employee> allEmployee = employeeService.getAllEmployee();
+                PageInfo<Employee> allEmployee = employeeService.getAllEmployee(1,10);
             } catch (Exception e) {
                 e.printStackTrace();
             }
