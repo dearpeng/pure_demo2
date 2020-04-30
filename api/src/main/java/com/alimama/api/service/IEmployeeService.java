@@ -21,4 +21,8 @@ public interface IEmployeeService {
     Integer deleteById(Long id);
 
     List<Employee> getAllEmployees(Integer page, Integer limit);
+
+    Employee getEmployeeDetails(Long id);
+
+    Long updateEmployee(Employee employee);
 }

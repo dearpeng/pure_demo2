@@ -6,6 +6,7 @@ import com.alimama.api.model.Employee;
 import com.alimama.api.model.EmployeeExample;
 import com.alimama.api.myDataPage.DataPage;
 import com.alimama.api.pipeLine.PipeLine;
+import com.alimama.api.service.IDepartmentService;
 import com.alimama.api.service.IEmployeeService;
 import com.alimama.server.chains.CommandChain;
 import com.alimama.server.context.DataConformContext;
@@ -35,6 +36,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     // 定义的资源
     public static final String USER_RES = "userResource";
 
+    @Autowired
+    private IDepartmentService departmentService;
 
     /**
      * 管道校验
@@ -96,6 +99,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public List<Employee> getAllEmployees(Integer page, Integer limit) {
         return employeeMapper.selectPage(page,limit);
+    }
+
+    @Override
+    public Employee getEmployeeDetails(Long id) {
+        return employeeMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Long updateEmployee(Employee employee) {
+        return employeeMapper.updateByPrimaryKey(employee);
     }
 
     /**

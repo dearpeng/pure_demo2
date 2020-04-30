@@ -144,23 +144,34 @@ public class EmployeeController {
      * @param model
      * @return
      */
-    @GetMapping("/emp")
-    public String toAddPage(Model model) {
+    @GetMapping("/getAllDepartment")
+    @ResponseBody
+    public String toAddPage() {
         List<Department> departments = departmentService.getAllDepartmentList();
-        model.addAttribute("depts", departments);
-        return "add";
+        return WebUtil.getSuccessJson(departments);
     }
 
     @RequiresRoles("admin")
     @RequiresPermissions("add")
     @RequestMapping("/update")
     @ResponseBody
-    public String addEmp(Employee employee) {
+    public String updateEmployee(Employee employee) {
         if (Objects.isNull(employee) || Objects.isNull(employee.getId())){
             return WebUtil.getFailureJson("主键为空!");
         }
-        employeeService.addEmployee(employee);
+       Long id =  employeeService.updateEmployee(employee);
         //重定向到emps请求  / 表示当前地址
         return WebUtil.getSuccessJson("更新成功!");
+    }
+
+    /**
+     * 获取单个客户
+     * @return
+     */
+    @RequestMapping("/getEmployee")
+    @ResponseBody
+    public String getEmployee(@RequestParam(value = "id")Long id) {
+        Employee employee =  employeeService.getEmployeeDetails(id);
+        return WebUtil.getSuccessJson(employee);
     }
 }

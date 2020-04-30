@@ -3,8 +3,10 @@ package com.alimama.api.model;
 
 
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.alimama.api.validations.EmailValidation;
 import lombok.NonNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.MessageInterpolator;
 import javax.validation.constraints.NotNull;
@@ -15,13 +17,13 @@ public class Employee implements Serializable {
     /**
      * 主键
      */
-//    @NotNull(message = "用户主键不能为空!")
+    @NotNull(message = "用户主键不能为空!")
     private Long id;
 
     /**
      * 名字
      */
-//    @NotNull(message = "用户姓名不能为空!")
+    @NotNull(message = "用户姓名不能为空!")
     private String lastName;
 
     /**
@@ -51,6 +53,8 @@ public class Employee implements Serializable {
     /**
      * 生日
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JSONField(format="yyyy-MM-dd")
     private Date birth;
 
     /**
