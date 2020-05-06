@@ -17,7 +17,7 @@ public class Employee implements Serializable {
     /**
      * 主键
      */
-    @NotNull(message = "用户主键不能为空!")
+//    @NotNull(message = "用户主键不能为空!")
     private Long id;
 
     /**

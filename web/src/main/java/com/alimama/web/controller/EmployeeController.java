@@ -122,6 +122,21 @@ public class EmployeeController {
         }
         return WebUtil.getSuccessJson(id + "的客户已经删除!");
     }
+    /* *
+     * 批量删除emp
+     * @param id
+     * @return
+     * */
+    @RequestMapping("/batchDeleteEmp")
+    @ResponseBody
+    public String batchDeleteEmp(@RequestParam(value = "allIds") String allIds) {
+        try {
+            employeeService.batchDeleteEmp(allIds);
+        } catch (Exception e) {
+            return WebUtil.getFailureJson(e.getMessage());
+        }
+        return WebUtil.getSuccessJson(allIds + "的客户已经删除!");
+    }
 
     /**
      * 新增员工

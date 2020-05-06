@@ -25,4 +25,6 @@ public interface IEmployeeService {
     Employee getEmployeeDetails(Long id);
 
     Long updateEmployee(Employee employee);
+
+    Integer batchDeleteEmp(String ids);
 }

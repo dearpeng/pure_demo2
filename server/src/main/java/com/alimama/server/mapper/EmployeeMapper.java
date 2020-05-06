@@ -34,4 +34,6 @@ public interface EmployeeMapper {
     List<Employee> selectPageByExample(EmployeeExample employeeExample, @Param("pageNum")int page, @Param("pageSize")int limit);
 
     List<Employee> selectPage( @Param("pageNum")int page, @Param("pageSize")int limit);
+
+    Integer batchDeleteEmp(@Param(value = "ids") List<Long> ids);
 }

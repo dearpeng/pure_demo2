@@ -24,6 +24,8 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Created by PengWX on 2019/4/23.
@@ -76,7 +78,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         EmployeeExample employeeExample = new EmployeeExample();
 
         PageHelper.startPage(page, limit);
-        List<Employee> employees = employeeMapper.selectPageByExample(employeeExample,page,limit);
+        List<Employee> employees = employeeMapper.selectPageByExample(employeeExample, page, limit);
         return new PageInfo<Employee>(employees);
 
     }
@@ -98,7 +100,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public List<Employee> getAllEmployees(Integer page, Integer limit) {
-        return employeeMapper.selectPage(page,limit);
+        return employeeMapper.selectPage(page, limit);
     }
 
     @Override
@@ -109,6 +111,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public Long updateEmployee(Employee employee) {
         return employeeMapper.updateByPrimaryKey(employee);
+    }
+
+    @Override
+    public Integer batchDeleteEmp(String allIds) {
+        String[] ids = allIds.trim().split(",");
+        List<Long> longIds = new ArrayList<>();
+        if (Objects.nonNull(ids)) {
+            longIds=  Arrays.asList(ids).stream().map(id -> Long.valueOf(id)).distinct().collect(Collectors.toList());
+        }
+        return employeeMapper.batchDeleteEmp(longIds);
     }
 
     /**
