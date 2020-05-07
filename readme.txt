@@ -9,3 +9,8 @@
 8.sentinel限流,降权,熔断(@SentinelResource)
 9.引入管道(BeanConfig-->submitPipeline),Apache commons-chain(CommandChain)两种方式来处理链式逻辑问题.
 10.加入springboot的validation校验参数   https://blog.csdn.net/csdn13257081409/article/details/105716313
+11.增加验证码生成
+    1. 导包  kaptcha
+    2. CaptchaConfig 验证码配置
+    3. KaptchaTextCreator验证码文本生成器
+    4. SysCaptchaController 调用接口测试
