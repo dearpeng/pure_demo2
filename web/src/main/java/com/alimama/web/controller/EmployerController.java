@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -117,5 +119,16 @@ public class EmployerController {
         } else {
             return WebUtil.getFailureJson("用户名或者密码为空!");
         }
+    }
+
+    /**
+     * 使用权限管理工具进行用户的退出，跳出登录，给出提示信息
+     * @return
+     */
+    @PostMapping("/logout")
+    @ResponseBody
+    public String logout() {
+        SecurityUtils.getSubject().logout();
+        return WebUtil.getSuccessJson("退出成功!");
     }
 }
