@@ -10,6 +10,7 @@ import com.alimama.api.service.IEmployeeService;
 import com.alimama.api.utils.WebUtil;
 import com.alimama.web.globalErrorHandler.BizException;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -176,15 +177,16 @@ public class EmployeeController {
         if (Objects.isNull(employee) || Objects.isNull(employee.getId())){
             return WebUtil.getFailureJson("主键为空!");
         }
-        int i = 1/0;
+//        throw new AuthenticationException();
+        throw new AuthorizationException();
 
-        try {
+       /* try {
             Long id =  employeeService.updateEmployee(employee);
             //重定向到emps请求  / 表示当前地址
             return WebUtil.getSuccessJson("更新成功!");
         } catch (Exception e) {
             return WebUtil.getFailureJson(e.getMessage());
-        }
+        }*/
     }
 
 

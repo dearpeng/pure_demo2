@@ -18,11 +18,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ControllerAdvice
-@Configuration
 public class BaseGlobalExceptionHandler {
 
 
-    @ExceptionHandler(value =
+  /*  @ExceptionHandler(value =
             {
                     Exception.class
             }
@@ -30,12 +29,12 @@ public class BaseGlobalExceptionHandler {
     @ResponseBody
     public String handleBizException(Exception e) {
         return WebUtil.getFailureJson(e.getMessage());
-    }
+    }*/
 
 
     @ExceptionHandler(value = AuthenticationException.class)
     @ResponseBody
-    public String handleUnAuthenticationException(UnauthorizedException ex) {
+    public String handleUnAuthenticationException(AuthenticationException ex) {
         return WebUtil.getFailureJson(ex.getMessage());
     }
     @ExceptionHandler(AuthorizationException.class)
