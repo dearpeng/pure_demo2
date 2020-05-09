@@ -13,4 +13,4 @@
     1. 导包  kaptcha
     2. CaptchaConfig 验证码配置
     3. KaptchaTextCreator验证码文本生成器
-    4. SysCaptchaController 调用接口测试
+    4. SysCaptchaController 调用接口测试   http://localhost:8086/captcha/captchaImage?type=math&s=0.5114908571706647

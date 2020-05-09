@@ -10,11 +10,13 @@ import com.alimama.api.service.IEmployeeService;
 import com.alimama.api.utils.WebUtil;
 import com.alimama.web.globalErrorHandler.BizException;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -112,6 +114,7 @@ public class EmployeeController {
      * @param id
      * @return
      * */
+    @RequiresRoles("admin")
     @RequestMapping("/delete")
     @ResponseBody
     public String deleteEmp(@RequestParam(value = "id") Long id) {
@@ -156,7 +159,6 @@ public class EmployeeController {
     /**
      * 获取部门,点击添加员工,跳转页面
      *
-     * @param model
      * @return
      */
     @GetMapping("/getAllDepartment")
@@ -174,10 +176,17 @@ public class EmployeeController {
         if (Objects.isNull(employee) || Objects.isNull(employee.getId())){
             return WebUtil.getFailureJson("主键为空!");
         }
-       Long id =  employeeService.updateEmployee(employee);
-        //重定向到emps请求  / 表示当前地址
-        return WebUtil.getSuccessJson("更新成功!");
+        int i = 1/0;
+
+        try {
+            Long id =  employeeService.updateEmployee(employee);
+            //重定向到emps请求  / 表示当前地址
+            return WebUtil.getSuccessJson("更新成功!");
+        } catch (Exception e) {
+            return WebUtil.getFailureJson(e.getMessage());
+        }
     }
+
 
     /**
      * 获取单个客户
