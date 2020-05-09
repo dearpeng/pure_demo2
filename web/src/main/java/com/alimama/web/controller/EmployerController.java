@@ -125,7 +125,7 @@ public class EmployerController {
      * 使用权限管理工具进行用户的退出，跳出登录，给出提示信息
      * @return
      */
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     @ResponseBody
     public String logout() {
         SecurityUtils.getSubject().logout();
