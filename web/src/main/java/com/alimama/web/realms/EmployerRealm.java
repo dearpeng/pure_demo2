@@ -39,12 +39,14 @@ public class EmployerRealm extends AuthorizingRealm {
         if (Objects.nonNull(employerVO)){
 
             //添加角色和权限
-            for (Role role : employerVO.getRoles()) {
-                //添加角色
-                simpleAuthorizationInfo.addRole(role.getName());
-                //添加权限
-                for (Permission permission : employerVO.getPermissions()) {
-                    simpleAuthorizationInfo.addStringPermission(permission.getPermissionName());
+            if (!CollectionUtils.isEmpty(employerVO.getRoles())){
+                for (Role role : employerVO.getRoles()) {
+                    //添加角色
+                    simpleAuthorizationInfo.addRole(role.getName());
+                    //添加权限
+                    for (Permission permission : employerVO.getPermissions()) {
+                        simpleAuthorizationInfo.addStringPermission(permission.getPermissionName());
+                    }
                 }
             }
         }

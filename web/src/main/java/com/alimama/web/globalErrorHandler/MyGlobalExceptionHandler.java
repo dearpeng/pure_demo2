@@ -7,6 +7,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,7 @@ public class MyGlobalExceptionHandler {
             e1.printStackTrace();
         } catch (Exception e1) {
             jsonObject.put("code", 30000);
-            jsonObject.put("message", e.getMessage());
+            jsonObject.put("message", StringUtils.isEmpty(e.getMessage())?"这里报了30000错了,快来看看!":e.getMessage());
             e1.printStackTrace();
         }
         return jsonObject;

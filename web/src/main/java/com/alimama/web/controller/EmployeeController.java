@@ -170,7 +170,7 @@ public class EmployeeController {
         return WebUtil.getSuccessJson(departments);
     }
 
-    //    @RequiresRoles("admin")
+    @RequiresRoles("admin")
     @RequiresPermissions("update")
     @RequestMapping("/update")
     @ResponseBody

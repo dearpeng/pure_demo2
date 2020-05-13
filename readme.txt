@@ -14,3 +14,5 @@
     2. CaptchaConfig 验证码配置
     3. KaptchaTextCreator验证码文本生成器
     4. SysCaptchaController 调用接口测试   http://localhost:8086/captcha/captchaImage?type=math&s=0.5114908571706647
+12.全局异常处理 MyGlobalExceptionHandler类中 @ControllerAdvice @ExceptionHandler两个注解就行了.但是@ControllerAdvice注解只能有一个
+    不然会出现你自己定义的异常,但是没有捕捉.
