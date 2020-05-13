@@ -31,9 +31,9 @@ public class EmployerRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         //获取登录用户名
-        String mobile = (String) principalCollection.getPrimaryPrincipal();
+        Employer employer = (Employer) principalCollection.getPrimaryPrincipal();
         //根据用户名去数据库查询用户信息
-       EmployerVO employerVO  = employerService.selectEmployerAndPermissions(mobile);
+       EmployerVO employerVO  = employerService.selectEmployerAndPermissions(employer.getMobilePhone());
 
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         if (Objects.nonNull(employerVO)){
@@ -67,7 +67,7 @@ public class EmployerRealm extends AuthorizingRealm {
         } else {
             //这里验证authenticationToken和simpleAuthenticationInfo的信息
             Employer employer = employers.get(0);
-            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(mobile, employer.getPassword(), getName());
+            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(employer, employer.getPassword(), getName());
             return simpleAuthenticationInfo;
         }
     }

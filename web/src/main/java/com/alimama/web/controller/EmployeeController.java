@@ -126,6 +126,7 @@ public class EmployeeController {
         }
         return WebUtil.getSuccessJson(id + "的客户已经删除!");
     }
+
     /* *
      * 批量删除emp
      * @param id
@@ -169,35 +170,36 @@ public class EmployeeController {
         return WebUtil.getSuccessJson(departments);
     }
 
-    @RequiresRoles("admin")
-    @RequiresPermissions("add")
+    //    @RequiresRoles("admin")
+    @RequiresPermissions("update")
     @RequestMapping("/update")
     @ResponseBody
     public String updateEmployee(Employee employee) {
-        if (Objects.isNull(employee) || Objects.isNull(employee.getId())){
+        if (Objects.isNull(employee) || Objects.isNull(employee.getId())) {
             return WebUtil.getFailureJson("主键为空!");
         }
-//        throw new AuthenticationException();
-        throw new AuthorizationException();
+//        int i = 1/0;
+//        throw new AuthorizationException();
 
-       /* try {
-            Long id =  employeeService.updateEmployee(employee);
+        try {
+            Long id = employeeService.updateEmployee(employee);
             //重定向到emps请求  / 表示当前地址
             return WebUtil.getSuccessJson("更新成功!");
         } catch (Exception e) {
             return WebUtil.getFailureJson(e.getMessage());
-        }*/
+        }
     }
 
 
     /**
      * 获取单个客户
+     *
      * @return
      */
     @RequestMapping("/getEmployee")
     @ResponseBody
-    public String getEmployee(@RequestParam(value = "id")Long id) {
-        Employee employee =  employeeService.getEmployeeDetails(id);
+    public String getEmployee(@RequestParam(value = "id") Long id) {
+        Employee employee = employeeService.getEmployeeDetails(id);
         return WebUtil.getSuccessJson(employee);
     }
 }
